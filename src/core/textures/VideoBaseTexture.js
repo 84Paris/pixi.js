@@ -35,7 +35,7 @@ export default class VideoBaseTexture extends BaseTexture
      * @param {HTMLVideoElement} source - Video source
      * @param {number} [scaleMode=PIXI.settings.SCALE_MODE] - See {@link PIXI.SCALE_MODES} for possible values
      */
-    constructor(source, scaleMode)
+    constructor(source, scaleMode, autoplay)
     {
         if (!source)
         {
@@ -66,7 +66,7 @@ export default class VideoBaseTexture extends BaseTexture
          * @member {boolean}
          * @default true
          */
-        this.autoPlay = true;
+        this.autoPlay = autoplay;
 
         this.update = this.update.bind(this);
         this._onCanPlay = this._onCanPlay.bind(this);
@@ -208,7 +208,7 @@ export default class VideoBaseTexture extends BaseTexture
      * @param {number} [scaleMode=PIXI.settings.SCALE_MODE] - See {@link PIXI.SCALE_MODES} for possible values
      * @return {PIXI.VideoBaseTexture} Newly created VideoBaseTexture
      */
-    static fromVideo(video, scaleMode)
+    static fromVideo(video, scaleMode, autoplay)
     {
         if (!video._pixiId)
         {
@@ -219,7 +219,7 @@ export default class VideoBaseTexture extends BaseTexture
 
         if (!baseTexture)
         {
-            baseTexture = new VideoBaseTexture(video, scaleMode);
+            baseTexture = new VideoBaseTexture(video, scaleMode, autoplay);
             BaseTexture.addToCache(baseTexture, video._pixiId);
         }
 
@@ -238,7 +238,7 @@ export default class VideoBaseTexture extends BaseTexture
      * @param {number} scaleMode - See {@link PIXI.SCALE_MODES} for possible values
      * @return {PIXI.VideoBaseTexture} Newly created VideoBaseTexture
      */
-    static fromUrl(videoSrc, scaleMode)
+    static fromUrl(videoSrc, scaleMode, autoplay)
     {
         const video = document.createElement('video');
 
@@ -261,7 +261,7 @@ export default class VideoBaseTexture extends BaseTexture
 
         video.load();
 
-        return VideoBaseTexture.fromVideo(video, scaleMode);
+        return VideoBaseTexture.fromVideo(video, scaleMode, autoplay);
     }
 
     /**
