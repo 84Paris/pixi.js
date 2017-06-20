@@ -366,9 +366,9 @@ export default class Texture extends EventEmitter
      * @param {number} [scaleMode=PIXI.settings.SCALE_MODE] - See {@link PIXI.SCALE_MODES} for possible values
      * @return {PIXI.Texture} The newly created texture
      */
-    static fromVideoUrl(videoUrl, scaleMode)
+    static fromVideoUrl(videoUrl, scaleMode, autoplay)
     {
-        return new Texture(VideoBaseTexture.fromUrl(videoUrl, scaleMode));
+        return new Texture(VideoBaseTexture.fromUrl(videoUrl, scaleMode, autoplay));
     }
 
     /**
