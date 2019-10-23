@@ -1175,7 +1175,7 @@ export default class InteractionManager extends EventEmitter
                 // set the propagation hint.
                 if (eventData.stopsPropagatingAt === displayObject)
                 {
-                    eventData.stopPropagationHint = true;
+                    // eventData.stopPropagationHint = true;
                 }
 
                 this.dispatchEvent(displayObject, eventString, eventData);
